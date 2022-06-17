@@ -1,0 +1,54 @@
+spring:
+  application:
+    name: gatewayService
+  cloud:
+    gateway:
+      routes:
+        - id: BranchAdminService
+          uri: lb://BranchAdminService
+          predicates:
+            - Path=/branchAdmin/**
+
+        
+
+        - id: creatorService
+          uri: lb://creatorService
+          predicates:
+            - Path=/superAdmin/**
+
+        - id: loginService
+          uri: lb://loginService
+          predicates:
+            - Path=/login/**
+            
+            
+            
+        - id: clientService
+          uri: lb://clientService
+          predicates:
+            - Path=/client/**
+            
+            
+        - id: BranchService
+          uri: lb://BranchService
+          predicates:
+            - Path=/branch/**   
+            
+
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+
+
+server:
+  port: 8989

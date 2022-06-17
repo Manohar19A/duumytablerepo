@@ -1,0 +1,18 @@
+.frm{
+
+    width: 100%;
+    height: 100%;
+
+
+}
+
+.titl{
+
+align-items: center;
+
+}
+.btnn:hover{
+
+    
+    background-color: rgb(227, 190, 98);
+}
